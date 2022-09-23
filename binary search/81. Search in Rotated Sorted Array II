@@ -1,0 +1,35 @@
+class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        if len(nums) == 1:
+            if target == nums[0]:
+                return True
+            else:
+                return False
+        l=0 
+        r=len(nums)-1 
+
+        while(l<=r):
+            mid=(l+r)//2
+
+            if target==nums[mid]:
+                print("int ")
+                return True
+            if nums[mid]==nums[l]:
+                l+=1
+               
+            elif nums[mid]>=nums[l]:  # left  to the mid part is sorted
+
+                if nums[l]<=target and target<=nums[mid]:
+                    r=mid-1 
+                else:
+                    l=mid+1
+            else:  # right  to the mid part is sorted
+                if nums[mid]<=target<=nums[r]:
+                    l=mid+1
+                else:
+                    r=mid-1
+
+
+
+
+        return False
